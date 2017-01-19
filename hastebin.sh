@@ -27,10 +27,10 @@ haste () {
 		then
 		contents=$(cat $1)
 	fi
-	output=$(curl -# -f -XPOST "http://hastebin.com/documents" -d"$contents")
+	output=$(curl -# -f -XPOST "https://hastebin.com/documents" -d"$contents")
 	if (( $? == 0 )) && [[ $output =~ \"key\" ]]
 		then
-		returnfile=$(sed 's/^.*"key":"/http:\/\/hastebin.com\//;s/".*$//' <<< "$output")
+		returnfile=$(sed 's/^.*"key":"/https:\/\/hastebin.com\//;s/".*$//' <<< "$output")
 		if [[ -n $returnfile ]]
 			then
 			echo "$returnfile"
